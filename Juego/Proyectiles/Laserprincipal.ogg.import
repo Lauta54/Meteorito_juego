@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Laserprincipal.ogg-456016dcc15bcfcf90bb8c12329f9e9c.oggstr"
+
+[deps]
+
+source_file="res://Juego/Proyectiles/Laserprincipal.ogg"
+dest_files=[ "res://.import/Laserprincipal.ogg-456016dcc15bcfcf90bb8c12329f9e9c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
