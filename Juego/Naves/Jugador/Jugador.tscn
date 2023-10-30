@@ -1,15 +1,51 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/JugadorNave.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Jugador/Jugador.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Naves/Jugador/JugadorMateria.tres" type="PhysicsMaterial" id=3]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Naves/Jugador/Estela/Trail2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Naves/Jugador/Motor/MotorSFX.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.6667
 
+[sub_resource type="Animation" id=2]
+resource_name = "Spawn"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
 [node name="Jugador" type="RigidBody2D"]
+z_index = 50
+collision_mask = 6
 physics_material_override = ExtResource( 3 )
 gravity_scale = 0.0
 can_sleep = false
@@ -35,6 +71,26 @@ position = Vector2( 0, -33 )
 position = Vector2( 0.025, 33 )
 
 [node name="LaserBeam2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 44.5746, 0 )
+position = Vector2( 42.7017, 0.374573 )
+
+[node name="EstelaPuntoInicio" type="Position2D" parent="."]
+position = Vector2( -18.7288, 7.62939e-06 )
+
+[node name="Trail2D" parent="EstelaPuntoInicio" instance=ExtResource( 6 )]
+position = Vector2( -7.62939e-05, -3.05176e-05 )
+points = PoolVector2Array( -0.0233002, -0.130203, 21.3276, 0.244377, 27.6954, -0.130203, 60, 0 )
+width = 50.0
+is_emitting = true
+lifetime = 0.6
+max_points = 150
+target_path = NodePath("..")
+
+[node name="MotorSFX" parent="." instance=ExtResource( 7 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Spawn"
+anims/Spawn = SubResource( 2 )
+anims/default = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Canion"]

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Laserprincipal.ogg-456016dcc15bcfcf90bb8c12329f9e9c.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
