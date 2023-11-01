@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 73.5014
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "activado"
 loop = true
 tracks/0/type = "value"
@@ -49,7 +49,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "activando"
 length = 0.5
 tracks/0/type = "value"
@@ -125,8 +125,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "default"
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteCompleto:visible")
@@ -211,26 +210,28 @@ position = Vector2( -6.73477, 0 )
 shape = SubResource( 1 )
 
 [node name="SpriteCompleto" type="Sprite" parent="."]
-visible = false
+modulate = Color( 0.960938, 0.210997, 0.0638123, 1 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 
 [node name="SpriteAbriendo" type="Sprite" parent="."]
-visible = false
+modulate = Color( 0.9375, 0.201602, 0.032959, 1 )
 rotation = 1.5708
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="SpriteAbriendo2" type="Sprite" parent="."]
 visible = false
+modulate = Color( 0.949219, 0.0630341, 0.0630341, 1 )
+self_modulate = Color( 0.984314, 0.984314, 0.984314, 1 )
 rotation = 1.5708
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/activado = SubResource( 3 )
-anims/activando = SubResource( 4 )
-anims/default = SubResource( 2 )
+anims/activado = SubResource( 2 )
+anims/activando = SubResource( 3 )
+anims/default = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

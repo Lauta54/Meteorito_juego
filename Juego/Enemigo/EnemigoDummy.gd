@@ -15,5 +15,5 @@ func recibir_danio(danio: float) -> void:
 		queue_free()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Canion.set_esta_disparando(true)

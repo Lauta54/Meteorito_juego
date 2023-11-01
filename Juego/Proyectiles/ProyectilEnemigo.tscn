@@ -8,12 +8,13 @@ radius = 6.45844
 height = 33.1122
 
 [node name="ProyectilEnemigo" instance=ExtResource( 1 )]
+modulate = Color( 2, 0.04, 0.04, 1 )
 z_index = 39
 collision_layer = 16
 collision_mask = 5
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0.94902, 0, 0, 1 )
+modulate = Color( 0.968627, 0.00784314, 0.00784314, 1 )
 position = Vector2( 0.49793, 0.0743259 )
 scale = Vector2( 1.01143, 1.26114 )
 texture = ExtResource( 2 )
