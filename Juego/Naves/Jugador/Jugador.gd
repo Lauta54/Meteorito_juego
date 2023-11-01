@@ -7,7 +7,7 @@ enum ESTADO {SPAWN, VIVO, INVENCIBLE, MUERTO}
 export var potencia_motor:int = 20 
 export var potencia_rotacion:int = 280
 export var estela_maxima:int =  150
-
+export var hitpoints:float = 15.0
 
 
 #Atributos
@@ -21,13 +21,12 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
-
+onready var impacto_sfx:AudioStreamPlayer = $ImpactoSFX
+onready var escudo:Escudo = $Escudo
 
 #Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
-
-
 
 
 
@@ -55,7 +54,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_released("Mov_Adelante")
 		or event.is_action_released("Mov_Atras")):
 			motor_sfx.sonido_off()
-
+	## Control Escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
 
 
 
@@ -64,9 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Spawn":
 		controlador_estados(ESTADO.VIVO)
-
-
-
+	
 
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
@@ -81,6 +80,7 @@ func esta_input_activo() -> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false
 	return true
+
 
 
 #Metodos Custom
@@ -106,8 +106,6 @@ func controlador_estados(nuevo_estado: int) -> void:
 
 
 
-
-
 func Jugador_input() -> void:
 	if not esta_input_activo():
 		return
@@ -122,7 +120,6 @@ func Jugador_input() -> void:
 		return
 	
 	#rotacion
-	
 	dir_rotacion = 0
 	if Input.is_action_pressed("rotar_antihorario"):
 		dir_rotacion -= 1
@@ -137,12 +134,16 @@ func Jugador_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
+
+
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
 
-
-
-
+func recibir_danio(danio: float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	impacto_sfx.play()
 
 
 
