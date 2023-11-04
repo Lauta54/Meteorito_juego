@@ -82,6 +82,11 @@ func esta_input_activo() -> bool:
 	return true
 
 
+func _on_body_entered(body: Node) -> void:
+	if body is Meteorito:
+		body.destruir()
+		destruir()
+
 
 #Metodos Custom
 func controlador_estados(nuevo_estado: int) -> void:
@@ -144,6 +149,12 @@ func recibir_danio(danio: float) -> void:
 	if hitpoints <= 0.0:
 		destruir()
 	impacto_sfx.play()
+
+
+
+
+
+
 
 
 
