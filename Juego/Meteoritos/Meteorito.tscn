@@ -439,33 +439,17 @@ anims/default = SubResource( 2 )
 anims/impacto = SubResource( 3 )
 
 [node name="Spritediminuto1" type="Sprite" parent="."]
-visible = false
-position = Vector2( 33.5951, -34.7843 )
-rotation = 2.51327
-scale = Vector2( 1e-05, 1e-05 )
 z_index = 1
 texture = ExtResource( 5 )
 
 [node name="Spritediminuto2" type="Sprite" parent="."]
-visible = false
-position = Vector2( -49.6689, -22.1686 )
-rotation = 3.30042
-scale = Vector2( 1e-05, 1e-05 )
 z_index = 1
 texture = ExtResource( 4 )
 
 [node name="Spritediminuto3" type="Sprite" parent="."]
-visible = false
-position = Vector2( -39.2862, 58.6486 )
-rotation = -6.28319
-scale = Vector2( 1e-05, 1e-05 )
 z_index = 1
 texture = ExtResource( 5 )
 
 [node name="Spritediminuto4" type="Sprite" parent="."]
-visible = false
-position = Vector2( 39.5668, 35.0769 )
-rotation = -4.44186
-scale = Vector2( 1e-05, 1e-05 )
 z_index = 1
 texture = ExtResource( 4 )
