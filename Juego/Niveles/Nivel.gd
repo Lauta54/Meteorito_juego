@@ -6,7 +6,12 @@ export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
-export var tiempo_transicion_camara:float = 10
+export var tiempo_transicion_camara:float = 1.5
+
+# Atributos 
+var meteoritos_totales:int = 0
+
+
 
 ## Atributos Onready
 onready var contenedor_proyectiles:Node
@@ -45,6 +50,7 @@ func crear_contenedores() -> void:
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
 
+
 func _on_nave_destruida(posicion: Vector2, num_explosiones: int) -> void:
 	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
@@ -66,6 +72,8 @@ func _on_meteorito_destruido(pos: Vector2) -> void:
 	var new_explosion:ExplosionMeteorito = explosion_meteorito.instance()
 	new_explosion.global_position = pos
 	add_child(new_explosion)
+	
+	controlar_meteoritos_restantes()
 
 func _on_nave_en_sector_peligro(centro_cam: Vector2, tipo_peligro:String, 
 num_peligros:int) -> void:
@@ -75,25 +83,53 @@ num_peligros:int) -> void:
 		pass
 
 func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void:
+	meteoritos_totales = numero_peligros
 	var new_sector_meteoritos:SectorMeteoritos = sector_meteoritos.instance()
 	new_sector_meteoritos.crear(centro_camara, numero_peligros)
 	camara_nivel.global_position = centro_camara
 	contenedor_sector_meteoritos.add_child(new_sector_meteoritos)
+	camara_nivel.zoom = $Jugador/CamaraPlayer.zoom
+	camara_nivel.devolver_zoom_original()
 	transicion_camaras(
 		$Jugador/CamaraPlayer.global_position,
 		camara_nivel.global_position,
-		camara_nivel)
+		camara_nivel,
+		tiempo_transicion_camara
+	)
 
+func controlar_meteoritos_restantes() -> void:
+	meteoritos_totales -= 1
+	if meteoritos_totales == 0:
+		contenedor_sector_meteoritos.get_child(0).queue_free()
+		$Jugador/CamaraPlayer.set_puede_hacer_zoom(true)
+		var zoom_actual = $Jugador/CamaraPlayer.zoom
+		$Jugador/CamaraPlayer.zoom = camara_nivel.zoom
+		$Jugador/CamaraPlayer.zoom_suavizado(zoom_actual.x, zoom_actual.y, 1.0)
+		transicion_camaras(
+			camara_nivel.global_position,
+			$Jugador/CamaraPlayer.global_position,
+			$Jugador/CamaraPlayer,
+			tiempo_transicion_camara * 0.10
+		)
 
-func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D) -> void:
+func transicion_camaras(
+desde: Vector2, 
+hasta: Vector2, 
+camara_actual:Camera2D,
+tiempo_trancicion: float) -> void:
 	$TweenCamara.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
 		hasta,
-		tiempo_transicion_camara,
+		tiempo_trancicion,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
 	camara_actual.current = true
 	$TweenCamara.start()
+
+## Señales Internas
+func _on_TweenCamara_tween_completed(object:Object, _key: NodePath) -> void:
+	if object.name == "CamaraPlayer":
+		object.global_position = $Jugador.global_position
