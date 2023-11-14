@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/Jugador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/ExplosionMeteorito.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Naves/EstacionRecarga/EstacionRecarga.tscn" type="PackedScene" id=12]
@@ -19,9 +20,6 @@ meteorito = ExtResource( 5 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 6 )
 tiempo_transicion_camara = 0.5
-
-[node name="Jugador" parent="." instance=ExtResource( 1 )]
-position = Vector2( 948.793, 596.281 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -62,7 +60,7 @@ scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1091.53, 719.824 )
+position = Vector2( 1099.94, 699.643 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
@@ -72,7 +70,7 @@ scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 285.118, 719.148 )
+position = Vector2( 292.669, 722.924 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
@@ -97,7 +95,7 @@ scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1887.36, 1221.44 )
+position = Vector2( 1882.35, 1215.12 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
@@ -125,4 +123,13 @@ texture = ExtResource( 13 )
 position = Vector2( 297.322, -319.711 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
+
+[node name="Jugador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1136.9, 490.354 )
+collision_layer = 2147483649
+potencia_motor = 25
+potencia_rotacion = 150
+
+[node name="EnemigoInterceptor" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1448.91, 501.448 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
