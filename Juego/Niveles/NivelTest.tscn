@@ -20,6 +20,7 @@ meteorito = ExtResource( 5 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 6 )
 tiempo_transicion_camara = 0.5
+enemgio_interceptor = ExtResource( 8 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -27,7 +28,7 @@ environment = ExtResource( 3 )
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" instance=ExtResource( 9 )]
-position = Vector2( 1560.33, 224.5 )
+position = Vector2( 2757.76, -192.032 )
 tipo_peligro = "Meteorito"
 numero_peligros = 3
 
@@ -55,72 +56,103 @@ scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1894.49, 211.967 )
+position = Vector2( 1102.03, 196.253 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1099.94, 699.643 )
+position = Vector2( 1902.92, 197.947 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1091.22, 200.654 )
+position = Vector2( 2710.16, 210.25 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 292.669, 722.924 )
+position = Vector2( 2705.59, 726.956 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1894.49, 721.976 )
+position = Vector2( 2712.13, 1242.5 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2700.78, 721.976 )
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 296.407, 716.986 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 283.929, 1215.69 )
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1102.03, 717.075 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite9" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1081.08, 1219.06 )
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1905.71, 723.424 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite10" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1882.35, 1215.12 )
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1781.26, -315.546 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite11" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2690.45, 1221.44 )
+[node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 977.365, -312.183 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2665.67, 198.183 )
+[node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 294.557, -308.819 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1888.83, -302.85 )
+[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 2585.57, -301.492 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite14" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1096.39, -318.241 )
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 303.967, 1238.59 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
-[node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 297.322, -319.711 )
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 1104.55, 1238.68 )
+scale = Vector2( 2.15625, 1.04688 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 1908.24, 1241.2 )
+scale = Vector2( 2.15625, 1.04688 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -507.882, -308.962 )
+scale = Vector2( 2.15625, 1.04688 )
+texture = ExtResource( 13 )
+
+[node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -507.882, 204.196 )
+scale = Vector2( 2.15625, 1.04688 )
+texture = ExtResource( 13 )
+
+[node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -511.882, 704.196 )
+scale = Vector2( 2.15625, 1.04688 )
+texture = ExtResource( 13 )
+
+[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -503.882, 1220.2 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
@@ -130,6 +162,10 @@ collision_layer = 2147483649
 potencia_motor = 25
 potencia_rotacion = 150
 
-[node name="EnemigoInterceptor" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1448.91, 501.448 )
+[node name="TriggersInterceptor" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersInterceptor" instance=ExtResource( 9 )]
+position = Vector2( 1904, 700 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

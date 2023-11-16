@@ -20,6 +20,7 @@ z_index = 50
 z_as_relative = false
 collision_layer = 1
 collision_mask = 22
+mass = 1.33
 physics_material_override = ExtResource( 6 )
 contacts_reported = 2
 contact_monitor = true

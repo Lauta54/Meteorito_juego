@@ -7,10 +7,11 @@ export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var tiempo_transicion_camara:float = 1.5
+export var enemgio_interceptor:PackedScene = null
 
 # Atributos 
 var meteoritos_totales:int = 0
-
+var player:Jugador = null
 
 
 ## Atributos Onready
@@ -18,11 +19,13 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var contendor_enemigos:Node
 
 ## Metodos
 func _ready() -> void:
 	conector_seniales()
 	crear_contenedores()
+	player = DatosJuego.get_player_actual()
 
 
 ## Metodos Custom
@@ -44,6 +47,9 @@ func crear_contenedores() -> void:
 	contenedor_sector_meteoritos = Node.new()
 	contenedor_sector_meteoritos.name = "ContenedorSectorMeteoritos"
 	add_child(contenedor_sector_meteoritos)
+	contendor_enemigos = Node.new()
+	contendor_enemigos.name = "ContenedorEnemigos"
+	add_child(contendor_enemigos)
 
 func crear_posicion_aleatoria(ranfo_horizontal: float, rango_vertical:float) -> Vector2:
 	randomize()
@@ -96,7 +102,9 @@ num_peligros:int) -> void:
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
 	elif tipo_peligro == "Enemigo":
-		pass
+		crear_sector_enemigos(num_peligros)
+
+
 
 func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void:
 	meteoritos_totales = numero_peligros
@@ -112,6 +120,14 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 		camara_nivel,
 		tiempo_transicion_camara
 	)
+func crear_sector_enemigos(num_enemigos: int) ->void:
+	for i in range(num_enemigos):
+		var new_interceptor:EnemigoInterceptor = enemgio_interceptor.instance()
+		var spawn_pos:Vector2 = crear_posicion_aleatoria(1000.0, 800.0)
+		new_interceptor.global_position = player.global_position + spawn_pos
+		contendor_enemigos.add_child(new_interceptor)
+
+
 
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1

@@ -141,6 +141,7 @@ config/icon="res://Juego/Naves/Jugador/JugadorNave.png"
 [autoload]
 
 Eventos="*res://Juego/Autoloads/Eventos.gd"
+DatosJuego="*res://Juego/Autoloads/DatosJuego.gd"
 
 [debug]
 
