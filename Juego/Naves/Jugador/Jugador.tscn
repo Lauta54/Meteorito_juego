@@ -48,7 +48,7 @@ tracks/0/keys = {
 
 [node name="Jugador" type="RigidBody2D"]
 z_index = 50
-collision_mask = 22
+collision_mask = 54
 physics_material_override = ExtResource( 3 )
 gravity_scale = 0.0
 contacts_reported = 2
