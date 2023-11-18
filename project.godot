@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Canion.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "EnemgioDummy",
 "language": "GDScript",
 "path": "res://Juego/Naves/Enemigo/EnemigoDummy.gd"
@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Naves/Jugador/Escudo/Escudo.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "EstacionRecarga",
 "language": "GDScript",
 "path": "res://Juego/Estaciones/EstacionRecarga.gd"
