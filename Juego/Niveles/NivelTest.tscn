@@ -8,9 +8,10 @@
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=11]
-[ext_resource path="res://Juego/Naves/EstacionRecarga/EstacionRecarga.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 [ext_resource path="res://TemporalAssets/kenney_space-shooter-redux/Backgrounds/blue.png" type="Texture" id=13]
 
 [node name="NivelTest" type="Node2D"]
