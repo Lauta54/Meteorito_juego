@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/Jugador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -7,9 +7,9 @@
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/ExplosionMeteorito.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 [ext_resource path="res://TemporalAssets/kenney_space-shooter-redux/Backgrounds/blue.png" type="Texture" id=13]
@@ -21,7 +21,7 @@ meteorito = ExtResource( 5 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 6 )
 tiempo_transicion_camara = 0.5
-enemgio_interceptor = ExtResource( 8 )
+enemgio_interceptor = ExtResource( 10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -29,7 +29,7 @@ environment = ExtResource( 3 )
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" instance=ExtResource( 9 )]
-position = Vector2( 2757.76, -192.032 )
+position = Vector2( 1806.22, -62.3834 )
 tipo_peligro = "Meteorito"
 numero_peligros = 3
 
@@ -72,7 +72,7 @@ scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
 [node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2705.59, 726.956 )
+position = Vector2( 2699.93, 726.956 )
 scale = Vector2( 2.15625, 1.04688 )
 texture = ExtResource( 13 )
 
@@ -160,13 +160,18 @@ texture = ExtResource( 13 )
 [node name="Jugador" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1136.9, 490.354 )
 collision_layer = 2147483649
+collision_mask = 54
+physics_material_override = null
 potencia_motor = 25
 potencia_rotacion = 150
 
 [node name="TriggersInterceptor" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersInterceptor" instance=ExtResource( 9 )]
-position = Vector2( 1904, 700 )
+position = Vector2( 2608.82, 603.822 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
+
+[node name="BaseEnemiga" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1634.83, 610.94 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
