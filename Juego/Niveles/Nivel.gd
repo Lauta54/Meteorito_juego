@@ -36,6 +36,7 @@ func conector_seniales() -> void:
 	Eventos.connect("spawn_meteorito", self, "_on_spawn_meteoritos")
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
+	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
 
 
 func crear_contenedores() -> void:
@@ -78,8 +79,9 @@ func _on_nave_destruida(nave:Jugador, posicion: Vector2, num_explosiones: int) -
 	
 	
 
-func _on_base_destruida(pos_partes: Array) -> void:
+func _on_base_destruida(base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
+		base = self
 		crear_explosion(posicion)
 		yield(get_tree().create_timer(0.5), "timeout")
 
@@ -99,7 +101,7 @@ func crear_explosion(
 			yield(get_tree().create_timer(intervalo), "timeout")
 	
 
-	
+
 
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2,  
 	tamanio: float) -> void:
@@ -164,6 +166,10 @@ func controlar_meteoritos_restantes() -> void:
 			$Jugador/CamaraPlayer,
 			tiempo_transicion_camara * 0.10
 		)
+
+func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
+	contendor_enemigos.add_child(enemigo)
+
 
 func transicion_camaras(
 desde: Vector2, 

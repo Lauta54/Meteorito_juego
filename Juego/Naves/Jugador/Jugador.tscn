@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/Estela/EstelaPuntoInicio.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Naves/NaveBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Juego/Naves/Jugador/CamaraPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/Naves/Jugador/AnimacionesPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Juego/Naves/Jugador/JugadorMateria.tres" type="PhysicsMaterial" id=6]
 [ext_resource path="res://Juego/Naves/Jugador/Motor/MotorSFX.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Naves/Jugador/JugadorNave.png" type="Texture" id=8]
 [ext_resource path="res://Juego/Naves/Jugador/Escudo/Escudo.tscn" type="PackedScene" id=9]
@@ -19,12 +18,8 @@ position = Vector2( 0, 0.314972 )
 z_index = 50
 z_as_relative = false
 collision_layer = 1
-collision_mask = 22
-mass = 1.33
-physics_material_override = ExtResource( 6 )
 collision_mask = 54
-physics_material_override = ExtResource( 3 )
-gravity_scale = 0.0
+mass = 1.33
 contacts_reported = 2
 contact_monitor = true
 can_sleep = false
