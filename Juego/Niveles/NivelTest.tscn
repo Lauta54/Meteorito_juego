@@ -171,11 +171,7 @@ position = Vector2( -1108.94, -261.308 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
 
-[node name="BaseEnemiga" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2185.47, 154.531 )
-orbital = ExtResource( 14 )
-
 [node name="BaseEnemiga2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1440.15, 1348.83 )
+position = Vector2( 2369.14, 526.315 )
 orbital = ExtResource( 14 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
