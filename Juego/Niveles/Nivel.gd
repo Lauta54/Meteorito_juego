@@ -6,12 +6,15 @@ export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
-export var tiempo_transicion_camara:float = 1.5
+#export var tiempo_transicion_camara:float = 1.5
 export var enemgio_interceptor:PackedScene = null
+export var rele_masa:PackedScene = null
+export var tiempo_transicion_camara:float = 2.0
 
 # Atributos 
 var meteoritos_totales:int = 0
 var player:Jugador = null
+var numero_bases_enemigas = 0
 
 
 ## Atributos Onready
@@ -25,6 +28,7 @@ onready var contendor_enemigos:Node
 func _ready() -> void:
 	conector_seniales()
 	crear_contenedores()
+	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
 
 
@@ -52,6 +56,9 @@ func crear_contenedores() -> void:
 	contendor_enemigos = Node.new()
 	contendor_enemigos.name = "ContenedorEnemigos"
 	add_child(contendor_enemigos)
+	#contenedor_bases_enemigas = Node.new()
+	#contenedor_bases_enemigas.name = "ContenedorBasesEnemigas"
+	#add_child(contenedor_bases_enemigas)
 
 func crear_posicion_aleatoria(ranfo_horizontal: float, rango_vertical:float) -> Vector2:
 	randomize()
@@ -60,6 +67,13 @@ func crear_posicion_aleatoria(ranfo_horizontal: float, rango_vertical:float) -> 
 	
 	return Vector2(rand_x, rand_y)
 
+func contabilizar_bases_enemigas() -> int:
+	return $ContenedorBasesEnemigas.get_child_count()
+
+func crear_rele() -> void:
+	var new_rele_masa:ReleDeMasa = rele_masa.instance()
+	new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0, 800.0)
+	add_child(new_rele_masa)
 
 
 ## Conexion señales externas
@@ -76,14 +90,15 @@ func _on_nave_destruida(nave:Jugador, posicion: Vector2, num_explosiones: int) -
 			tiempo_transicion_camara
 		)
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
-	
-	
 
-func _on_base_destruida(base, pos_partes: Array) -> void:
+
+func _on_base_destruida(_base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
-		base = self
-		crear_explosion(posicion)
+		crear_explosion(posicion, 2.0)
 		yield(get_tree().create_timer(0.5), "timeout")
+	numero_bases_enemigas -= 1
+	if numero_bases_enemigas == 0:
+		crear_rele()
 
 func crear_explosion(
 	posicion: Vector2,
@@ -169,6 +184,8 @@ func controlar_meteoritos_restantes() -> void:
 
 func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
 	contendor_enemigos.add_child(enemigo)
+
+
 
 
 func transicion_camaras(
