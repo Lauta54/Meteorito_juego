@@ -10,3 +10,10 @@ func set_player_actual(player: Jugador) -> void:
 
 func get_player_actual() -> Jugador:
 	return player_actual
+
+func _ready() -> void:
+	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
+
+func _on_nave_destruida(nave: NaveBase, _posicion, _explosiones) -> void:
+	if nave is Jugador:
+		player_actual = null
