@@ -58,6 +58,7 @@ func set_is_casting(cast: bool) -> void:
 		appear()
 	else:
 		# Reset the laser endpoint
+		Eventos.emit_signal("ocultar_energia_laser")
 		laser_sfx.stop()
 		fill.points[1] = Vector2.ZERO
 		collision_particles.emitting = false
@@ -99,7 +100,7 @@ func controlar_energia(consumo:float) -> void:
 	energia += consumo
 	if energia > energia_original:
 		energia = energia_original
-	print("Energia Laser: ", energia)
+	Eventos.emit_signal("cambio_energia_laser", energia_original, energia)
 
 func appear() -> void:
 	if tween.is_active():

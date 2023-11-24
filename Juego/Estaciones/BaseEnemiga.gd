@@ -38,13 +38,12 @@ func elegir_animacion_aleatoria() -> String:
 	return lista_animacion[indice_anim_aleatoria]
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var player_onjetivo:Jugador = DatosJuego.get_player_actual()
 	if not player_onjetivo:
 		return
 	var dir_player:Vector2 = player_onjetivo.global_position - global_position
 	var angulo_player:float = rad2deg(dir_player.angle())
-	print(angulo_player)
 
 ## Metodos Custom
 func recibir_danio(danio:float) -> void:

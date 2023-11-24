@@ -22,7 +22,7 @@ func _on_body_entered(body: Node) -> void:
 		destruir()
 
 
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	frame_actual += 1
 	if frame_actual % 3 == 0:
 		rotar_hacia_player()

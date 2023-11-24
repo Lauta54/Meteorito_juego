@@ -286,7 +286,7 @@ position = Vector2( 1158.8, -377.802 )
 direccion = Vector2( -2, 1 )
 
 [node name="MeteoritoSpawner13" parent="Spawners" instance=ExtResource( 1 )]
-position = Vector2( 1154.59, -682.583 )
+position = Vector2( 1154.59, -685.758 )
 scale = Vector2( 0.919998, 1 )
 direccion = Vector2( -2, 0 )
 
@@ -301,9 +301,6 @@ direccion = Vector2( -2, 0 )
 [node name="MeteoritoSpawner16" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 3.1748, -701.285 )
 direccion = Vector2( 2, 0 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1.62964, 0.867065 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 

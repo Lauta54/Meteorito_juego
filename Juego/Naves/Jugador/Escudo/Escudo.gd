@@ -31,11 +31,15 @@ func _ready() -> void:
 ##Metodos Custom
 func controlar_energia(consumo:float) -> void:
 	energia += consumo
-	print("Enregia Escudo: ", energia)
+	
 	if energia > energia_original:
 		energia = energia_original
 	elif energia <= 0.0:
+		Eventos.emit_signal("ocultar_energia_escudo")
 		desactivar()
+		return
+	
+	Eventos.emit_signal("cambio_energia_escudo", energia_original, energia)
 
 
 

@@ -10,6 +10,7 @@ export var sector_meteoritos:PackedScene = null
 export var enemgio_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
 export var tiempo_transicion_camara:float = 2.0
+export var tiempo_limite:int = 10
 
 # Atributos 
 var meteoritos_totales:int = 0
@@ -23,17 +24,31 @@ onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
 onready var contendor_enemigos:Node
+onready var actualizador_timer:Timer = $ActualizadorTimer
 
 ## Metodos
 func _ready() -> void:
+	Eventos.emit_signal("nivel_iniciado")
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conector_seniales()
 	crear_contenedores()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
+	actualizador_timer.start()
 
 
 ## Metodos Custom
+func destruir_nivel() -> void:
+	crear_explosion(
+		player.global_position,
+		5.0,
+		2,
+		0.5,
+		Vector2(200.0, 100.0)
+	)
+	player.destruir()
+
 func conector_seniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
 	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
@@ -57,9 +72,6 @@ func crear_contenedores() -> void:
 	contendor_enemigos = Node.new()
 	contendor_enemigos.name = "ContenedorEnemigos"
 	add_child(contendor_enemigos)
-	#contenedor_bases_enemigas = Node.new()
-	#contenedor_bases_enemigas.name = "ContenedorBasesEnemigas"
-	#add_child(contenedor_bases_enemigas)
 
 func crear_posicion_aleatoria(ranfo_horizontal: float, rango_vertical:float) -> Vector2:
 	randomize()
@@ -93,8 +105,9 @@ func _on_nave_destruida(nave:Jugador, posicion: Vector2, num_explosiones: int) -
 			posicion + crear_posicion_aleatoria(200.0, 200.0),
 			camara_nivel,
 			tiempo_transicion_camara
-		)
-	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
+			)
+		$RestartTimer.start()
+	crear_explosion(posicion,1.0, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
 
 func _on_base_destruida(_base, pos_partes: Array) -> void:
@@ -107,8 +120,9 @@ func _on_base_destruida(_base, pos_partes: Array) -> void:
 
 func crear_explosion(
 	posicion: Vector2,
+	escala:float = 1.0,
 	numero: int = 1,
-	intervalo: float = 0.0,
+	intervalo: float = 0.4,
 	rangos_aleatorios: Vector2 = Vector2(0.0, 0.0) 
 	) -> void:
 		for _i in range(numero):
@@ -117,6 +131,7 @@ func crear_explosion(
 				rangos_aleatorios.x,
 				rangos_aleatorios.y
 				)
+			new_explosion.scale = Vector2(escala, escala)
 			add_child(new_explosion)
 			yield(get_tree().create_timer(intervalo), "timeout")
 	
@@ -144,6 +159,7 @@ func _on_nave_en_sector_peligro(centro_cam: Vector2, tipo_peligro:String,
 num_peligros:int) -> void:
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
+		Eventos.emit_signal("cambio_numero_meteoritos", meteoritos_totales)
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
 
@@ -174,6 +190,7 @@ func crear_sector_enemigos(num_enemigos: int) ->void:
 
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1
+	Eventos.emit_signal("cambio_numero_meteoritos", meteoritos_totales)
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
 		$Jugador/CamaraPlayer.set_puede_hacer_zoom(true)
@@ -189,8 +206,6 @@ func controlar_meteoritos_restantes() -> void:
 
 func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
 	contendor_enemigos.add_child(enemigo)
-
-
 
 
 func transicion_camaras(
@@ -214,3 +229,17 @@ tiempo_trancicion: float) -> void:
 func _on_TweenCamara_tween_completed(object:Object, _key: NodePath) -> void:
 	if object.name == "CamaraPlayer":
 		object.global_position = $Jugador.global_position
+
+
+func _on_RestartTimer_timeout() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()
+
+
+func _on_ActualizadorTimer_timeout() -> void:
+	tiempo_limite -= 1
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
+	if tiempo_limite == 0:
+		destruir_nivel()
+
