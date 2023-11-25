@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/JugadorNave.png" type="Texture" id=1]
 [ext_resource path="res://Juego/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://Juego/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/UI/MiniMapas/MiniMapa.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -137,6 +138,8 @@ margin_left = -142.476
 margin_top = -35.8811
 margin_right = 127.524
 margin_bottom = -10.8811
+
+[node name="MiniMapa" parent="." instance=ExtResource( 5 )]
 
 [editable path="InfoZonaRecarga"]
 

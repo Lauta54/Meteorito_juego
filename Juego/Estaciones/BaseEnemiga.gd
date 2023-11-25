@@ -111,6 +111,7 @@ func destruir() -> void:
 		$Sprites/Sprite1.global_position
 	]
 	Eventos.emit_signal("base_destruida", self, posicion_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido", self)
 	queue_free()
 
 

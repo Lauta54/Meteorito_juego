@@ -25,7 +25,7 @@ sector_meteoritos = ExtResource( 6 )
 enemgio_interceptor = ExtResource( 10 )
 rele_masa = ExtResource( 8 )
 tiempo_transicion_camara = 0.5
-tiempo_limite = 20
+tiempo_limite = 60
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
@@ -46,8 +46,15 @@ script = ExtResource( 11 )
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
-[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
-position = Vector2( 2306.53, 490.733 )
+[node name="EstacionRecarga" parent="ContenedorEstaciones" groups=[
+"minimapa",
+] instance=ExtResource( 12 )]
+position = Vector2( 1628.5, -736.832 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" groups=[
+"minimapa",
+] instance=ExtResource( 12 )]
+position = Vector2( 2776.47, -443.167 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
@@ -172,14 +179,21 @@ potencia_rotacion = 150
 [node name="TriggersInterceptor" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersInterceptor" instance=ExtResource( 9 )]
-position = Vector2( -1159.79, -1015.65 )
+position = Vector2( 2065.18, 436.656 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
-[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 14 )]
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" groups=[
+"minimapa",
+] instance=ExtResource( 14 )]
 position = Vector2( -1695.53, -722.169 )
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" groups=[
+"minimapa",
+] instance=ExtResource( 14 )]
+position = Vector2( -1434.81, 1041.28 )
 
 [node name="RestartTimer" type="Timer" parent="."]
 one_shot = true
