@@ -251,23 +251,23 @@ direccion = Vector2( 2, -1 )
 
 [node name="MeteoritoSpawner4" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( -1193.73, 661.155 )
-direccion = Vector2( 2, -1 )
+direccion = Vector2( 2, 1 )
 
 [node name="MeteoritoSpawner5" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( -523.842, 700.621 )
-direccion = Vector2( 2, -1 )
+direccion = Vector2( 2, 1 )
 
 [node name="MeteoritoSpawner6" parent="Spawners" instance=ExtResource( 1 )]
-position = Vector2( -634.96, -691.76 )
+position = Vector2( -634.96, -694.935 )
 direccion = Vector2( 2, 0 )
 
 [node name="MeteoritoSpawner7" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 273.033, 701.631 )
-direccion = Vector2( 2, -1 )
+direccion = Vector2( 2, 1 )
 
 [node name="MeteoritoSpawner10" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 759.124, 674.068 )
-direccion = Vector2( 2, -1 )
+direccion = Vector2( 2, 1 )
 
 [node name="MeteoritoSpawner8" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( 1177.85, 679.408 )

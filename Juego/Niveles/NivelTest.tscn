@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/Jugador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://TemporalAssets/kenney_space-shooter-redux/Backgrounds/blue.png" type="Texture" id=13]
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Juego/UI/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Niveles/Musica/musica_nivel.wav" type="AudioStream" id=16]
+[ext_resource path="res://Juego/Niveles/Musica/musica_combate.wav" type="AudioStream" id=17]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,6 +28,8 @@ enemgio_interceptor = ExtResource( 10 )
 rele_masa = ExtResource( 8 )
 tiempo_transicion_camara = 0.5
 tiempo_limite = 60
+musica_nivel = ExtResource( 16 )
+musica_combate = ExtResource( 17 )
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
@@ -50,15 +54,11 @@ script = ExtResource( 11 )
 "minimapa",
 ] instance=ExtResource( 12 )]
 position = Vector2( 1628.5, -736.832 )
-energia = 6.0
-radio_energia_entregada = 0.05
 
 [node name="EstacionRecarga2" parent="ContenedorEstaciones" groups=[
 "minimapa",
 ] instance=ExtResource( 12 )]
 position = Vector2( 2776.47, -443.167 )
-energia = 6.0
-radio_energia_entregada = 0.05
 
 [node name="TweenCamara" type="Tween" parent="."]
 
