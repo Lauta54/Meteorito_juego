@@ -10,4 +10,7 @@ prox_nivel = "res://Juego/Niveles/Nivel2.tscn"
 "minimapa",
 ] instance=ExtResource( 2 )]
 position = Vector2( 2330.31, 974.665 )
-hitpoints = 60.0
+hitpoints = 40.0
+
+[node name="Jugador" parent="." index="11"]
+position = Vector2( 697.438, 1551.26 )

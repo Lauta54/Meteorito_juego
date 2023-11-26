@@ -95,6 +95,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=6]
 length = 5.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1

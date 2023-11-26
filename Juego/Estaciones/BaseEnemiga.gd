@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	if not player_onjetivo:
 		return
 	var dir_player:Vector2 = player_onjetivo.global_position - global_position
-	var angulo_player:float = rad2deg(dir_player.angle())
+	var _angulo_player:float = rad2deg(dir_player.angle())
 
 ## Metodos Custom
 func recibir_danio(danio:float) -> void:
@@ -56,7 +56,7 @@ func recibir_danio(danio:float) -> void:
 		esta_destruida = true
 		destruir()
 	barra_salud.set_hitpoints_actual(hitpoints)
-	impacto_SFX
+	#impacto_SFX
 
 func seleccionar_ruta() -> void :
 	randomize()

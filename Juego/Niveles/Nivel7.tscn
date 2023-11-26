@@ -1,5 +1,60 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=4]
 
 [node name="Nivel7" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel8.tscn"
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( 2993.97, 721.119 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1876.42, 807.956 )
+
+[node name="SectorDePeligro" parent="TriggersInterceptor" index="0" instance=ExtResource( 3 )]
+position = Vector2( 2729.68, 1789.58 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="SectorDePeligro6" parent="TriggersInterceptor" index="1" instance=ExtResource( 3 )]
+position = Vector2( 2608.87, 2269.07 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="SectorDePeligro2" parent="TriggersInterceptor" index="2" instance=ExtResource( 3 )]
+position = Vector2( 3303.56, 1672.54 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="SectorDePeligro3" parent="TriggersInterceptor" index="3" instance=ExtResource( 3 )]
+position = Vector2( 781.528, 1717.85 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="SectorDePeligro5" parent="TriggersInterceptor" index="4" instance=ExtResource( 3 )]
+position = Vector2( 509.692, 1261.01 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="SectorDePeligro4" parent="TriggersInterceptor" index="5" instance=ExtResource( 3 )]
+position = Vector2( 668.263, 2174.68 )
+tipo_peligro = "Enemigo"
+numero_peligros = 1
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" groups=[
+"minimapa",
+] instance=ExtResource( 2 )]
+position = Vector2( 218.979, 1823.56 )
+hitpoints = 60.0
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" index="1" groups=[
+"minimapa",
+] instance=ExtResource( 2 )]
+position = Vector2( 3299.78, 2299.28 )
+hitpoints = 60.0
+
+[node name="Jugador" parent="." index="11"]
+position = Vector2( 2033.96, 1557.04 )

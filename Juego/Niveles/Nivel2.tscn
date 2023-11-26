@@ -5,21 +5,26 @@
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
 
 [node name="Nivel2" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel3.tscn"
+tiempo_limite = 40
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
-position = Vector2( 1920.76, 596.863 )
+position = Vector2( 1977.91, 574.639 )
 tipo_peligro = "Meteorito"
+numero_peligros = 5
 
 [node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" index="1" instance=ExtResource( 3 )]
-position = Vector2( 1923.93, 1285.8 )
+position = Vector2( 1962.03, 1485.81 )
 tipo_peligro = "Meteorito"
+numero_peligros = 4
 
 [node name="SectorDePeligro3" parent="TriggersLluviaMeteoritos" index="2" instance=ExtResource( 3 )]
-position = Vector2( 1933.46, 1806.46 )
+position = Vector2( 1993.78, 2146.16 )
 tipo_peligro = "Meteorito"
+numero_peligros = 5
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" groups=[
 "minimapa",
 ] instance=ExtResource( 2 )]
-position = Vector2( 3235.13, 1006.41 )
-hitpoints = 60.0
+position = Vector2( 3552.61, 1028.63 )
+hitpoints = 40.0
