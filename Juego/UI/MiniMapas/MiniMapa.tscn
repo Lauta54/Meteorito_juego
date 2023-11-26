@@ -21,6 +21,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+timepo_visible = 8.0
 
 [node name="CuadroMinimapa" type="NinePatchRect" parent="."]
 margin_right = 318.0
@@ -79,4 +80,5 @@ texture = ExtResource( 7 )
 [node name="TweenVisibilidad" type="Tween" parent="."]
 
 [node name="TimerVisivilidad" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="TimerVisivilidad" to="." method="_on_TimerVisivilidad_timeout"]

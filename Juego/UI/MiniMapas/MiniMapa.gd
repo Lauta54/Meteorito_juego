@@ -3,7 +3,7 @@ extends MarginContainer
 
 ## Atributos export
 export var escala_zoom:float = 4.0
-export var timepo_visible:float = 5.0
+export var timepo_visible:float = 4.0
 
 ## Atributos
 var escala_grilla:Vector2
@@ -32,7 +32,7 @@ func set_esta_visible(hacer_visible: bool) -> void:
 		"modulate",
 		Color(1, 1, 1, not hacer_visible),
 		Color(1, 1, 1, hacer_visible),
-		0,8,
+		0,5,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)

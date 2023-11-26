@@ -50,11 +50,15 @@ script = ExtResource( 11 )
 "minimapa",
 ] instance=ExtResource( 12 )]
 position = Vector2( 1628.5, -736.832 )
+energia = 6.0
+radio_energia_entregada = 0.05
 
 [node name="EstacionRecarga2" parent="ContenedorEstaciones" groups=[
 "minimapa",
 ] instance=ExtResource( 12 )]
 position = Vector2( 2776.47, -443.167 )
+energia = 6.0
+radio_energia_entregada = 0.05
 
 [node name="TweenCamara" type="Tween" parent="."]
 

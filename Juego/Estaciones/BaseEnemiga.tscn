@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/Parte_Base_enemiga_3.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Juego/Naves/Rutas/RutaEnemigo.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Naves/Rutas/RutaEnemigo2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/UI/BarraSalud.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 60.9906
@@ -94,7 +95,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=6]
 length = 5.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1
@@ -118,6 +118,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0.909804, 0.0313726, 0.0313726, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
 }
 
 [node name="BaseEnemiga" type="Node2D"]
@@ -207,6 +219,16 @@ position = Vector2( -455.485, -1.49829 )
 position = Vector2( 474.963, -1.49829 )
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 13 )]
+margin_left = -107.0
+margin_top = -348.449
+margin_right = 107.0
+margin_bottom = -321.449
+rect_rotation = 0.0
+rounded = true
+siempre_visible = true
+es_top_level = true
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
