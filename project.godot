@@ -177,7 +177,7 @@ _global_script_class_icons={
 [application]
 
 config/name="SpaceMeteor"
-run/main_scene="res://Juego/Niveles/NivelTest.tscn"
+run/main_scene="res://Juego/UI/MenuPrincipal.tscn"
 config/icon="res://Juego/Naves/Jugador/JugadorNave.png"
 
 [autoload]

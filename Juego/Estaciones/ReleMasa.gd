@@ -36,4 +36,4 @@ func _on_DetectorJugador_body_entered(body: Node) -> void:
 
 
 func _on_Tween_tween_all_completed() -> void:
-	print("soy un boludo, espero llegar")
+	Eventos.emit_signal("nivel_completado")

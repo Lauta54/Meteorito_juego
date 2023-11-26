@@ -47,11 +47,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	#Control estela y sonido motor
 	if event.is_action_pressed("Mov_Adelante"):
 		estela.set_max_points(estela_maxima)
-		motor_sfx.sonido_on()
-		
+	
 	elif event.is_action_pressed("Mov_Atras"):
 		estela.set_max_points(0)
-		motor_sfx.sonido_on()
+		
 	
 	if (event.is_action_released("Mov_Adelante")
 		or event.is_action_released("Mov_Atras")):
@@ -75,8 +74,10 @@ func Jugador_input() -> void:
 	empuje = Vector2.ZERO
 	if Input.is_action_pressed("Mov_Adelante"):
 		empuje = Vector2(potencia_motor, 0)
+		motor_sfx.sonido_on()
 	elif Input.is_action_pressed("Mov_Atras"):
 		empuje = Vector2(-potencia_motor, 0)
+		motor_sfx.sonido_on()
 	if not esta_input_activo():
 		return
 	
